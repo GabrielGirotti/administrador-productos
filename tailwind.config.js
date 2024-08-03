@@ -12,6 +12,7 @@ export default {
       cyan: "#40DFED",
       gray: "#adc4c3",
       red: "#ff9e81",
+      white: "#ffffff",
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-      <header className="flex items-center justify-center p-4 bg-white">
+      <header className="flex items-center justify-center p-4 ">
         <h1 className=" font-kanit text-2xl text-cyan uppercase font-semibold text-center">
           Administrador de productos
         </h1>
