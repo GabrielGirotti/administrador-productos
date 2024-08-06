@@ -2,6 +2,7 @@ import { ActionFunctionArgs, Link, useLoaderData } from "react-router-dom";
 import { editAvailbility, getProducts } from "../services/ProductService";
 import ProductDetails from "../component/ProductDetails";
 import { Product } from "../types";
+import { Spinner } from "../component/Spinner";
 
 export async function loader() {
   const products = await getProducts();
@@ -12,7 +13,7 @@ export async function loader() {
 export async function action({ request }: ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData());
 
-  await editAvailbility(+data.id)
+  await editAvailbility(+data.id);
   return {};
 }
 
@@ -43,6 +44,8 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
+            {!products && <Spinner />}
+
             {products.map((product) => (
               <ProductDetails key={product.id} product={product} />
             ))}
