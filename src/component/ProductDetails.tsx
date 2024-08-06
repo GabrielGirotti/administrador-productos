@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useFetcher, useNavigate } from "react-router-dom";
 import { deleteProduct } from "../services/ProductService";
 
 type ProductDetailsProps = {
@@ -20,13 +20,28 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
     navigate("/");
   };
 
+  const fetcher = useFetcher()
+
   return (
     <tr className="border-b bg-white font-kanit">
       <td className="p-3 text-lg text-blck text-center">{product.name}</td>
       <td className="p-3 text-lg text-blck text-center">${product.price}</td>
       <td className="p-3 text-lg text-blck text-center">
-        {product.available === true ? <p>Disponible</p> : <p>No disponible</p>}
+        <fetcher.Form method='PATCH'>
+          <button
+            type="submit"
+            name="id"
+            value={product.id}
+            className={`${product.available ? "text-black bg-cyan" : "text-black bg-red"} w-full font-kanit text-xs p-2 rounded-lg  duration-300 font-light`}
+          >
+            {product.available ? "Disponible" : "No disponible"}
+          </button>
+        </fetcher.Form>
       </td>
+
+      {/* <td className="p-3 text-lg text-blck text-center">
+        {product.available === true ? <p>Disponible</p> : <p>No disponible</p>}
+      </td> */}
       <td className="p-3 text-lg text-gray ">
         <div className="flex gap-2 items-center justify-center flex-wrap">
           <button
