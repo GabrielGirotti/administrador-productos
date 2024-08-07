@@ -33,6 +33,7 @@ const Products = () => {
           Agregar producto
         </Link>
       </div>
+      {products === undefined || (products === null && <Spinner />)}
       <div className="p-2">
         <table className="w-[500px] max-w-[80vw] mt-5 table-auto ">
           <thead className=" border-b text-gray font-kanit ">
@@ -44,11 +45,15 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
-            {!products && <Spinner />}
-
-            {products.map((product) => (
-              <ProductDetails key={product.id} product={product} />
-            ))}
+            {products.length === 0 ? (
+              <p className="text-gray font-kanit">
+                No hay productos registrados
+              </p>
+            ) : (
+              products.map((product) => (
+                <ProductDetails key={product.id} product={product} />
+              ))
+            )}
           </tbody>
         </table>
       </div>
