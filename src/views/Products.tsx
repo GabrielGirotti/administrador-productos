@@ -33,7 +33,7 @@ const Products = () => {
           Agregar producto
         </Link>
       </div>
-      {products === undefined || (products === null && <Spinner />)}
+      {products === undefined || products === null && <Spinner />}
       <div className="p-2">
         <table className="w-[500px] max-w-[80vw] mt-5 table-auto ">
           <thead className=" border-b text-gray font-kanit ">
